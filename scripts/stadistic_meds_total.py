@@ -1,7 +1,13 @@
 import pandas as pd
+import os
 
 # Cargar el archivo limpio
-df = pd.read_excel("../data/DATASET_LIMPIO_FINAL_5.xlsx")
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+EXCEL_PATH = os.path.join(BASE_DIR, "data", "DATASET_LIMPIO_FINAL_5.xlsx")
+GRAPHICS_PATH = os.path.join(BASE_DIR, "graficos")
+
+# Leer el archivo
+df = pd.read_excel(EXCEL_PATH)
 
 # Agrupar todas las salidas mensuales de todos los medicamentos
 serie_total = df.groupby("Fecha")["Salidas - Cantidad"].sum()

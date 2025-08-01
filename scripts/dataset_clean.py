@@ -1,9 +1,12 @@
 import pandas as pd
+import os
 
 # Ruta del archivo Excel con las hojas por mes
-file_path = "../data/INVENTARIO_SERIE_FINAL_2020_2024_DEFINITIVO.xlsx"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+EXCEL_PATH = os.path.join(BASE_DIR, "data", "DATASET_LIMPIO_FINAL_5.xlsx")
+GRAPHICS_PATH = os.path.join(BASE_DIR, "graficos")
 
-xls = pd.ExcelFile(file_path)
+xls = pd.ExcelFile(EXCEL_PATH)
 sheets = xls.sheet_names
 
 # Lista para consolidar
