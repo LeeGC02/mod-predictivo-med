@@ -19,9 +19,9 @@
 
 - [x] Limpieza de datos
 - [x] Pruebas de estacionariedad
-- [ ] Análisis de autocorrelación
-- [ ] Modelado SARIMA
-- [ ] Evaluación del modelo
+- [x] Análisis de autocorrelación
+- [x] Modelado ARIMA
+- [x] Evaluación del modelo
 - [ ] Generación de predicciones
 - [ ] Integración con sistema web
 
