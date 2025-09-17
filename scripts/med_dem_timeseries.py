@@ -5,11 +5,7 @@ import os
 # df = pd.read_excel("../data/DATASET_LIMPIO_FINAL_5.xlsx")
 # Obtener ruta absoluta a la raíz del proyecto
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-
-# Ruta absoluta al archivo Excel
 EXCEL_PATH = os.path.join(BASE_DIR, "data", "DATASET_LIMPIO_FINAL_5.xlsx")
-
-# Ruta a la carpeta de gráficos
 GRAPHICS_PATH = os.path.join(BASE_DIR, "graficos")
 
 # Leer el archivo

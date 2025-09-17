@@ -2,18 +2,18 @@ import pandas as pd
 import os
 from statsmodels.tsa.stattools import acf, pacf
 
-# === RUTAS ===
+# rutas por la estructura
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 ESTACIONARIOS_PATH = os.path.join(BASE_DIR, "resultados", "resultado_estacionariedad.xlsx")
 DATA_PATH = os.path.join(BASE_DIR, "data", "DATASET_LIMPIO_FINAL_5.xlsx")
 RESULT_PATH = os.path.join(BASE_DIR, "resultados", "results_arima_parameters.xlsx")
 
-# === CARGAR DATOS ===
+# caraga de datos
 df_estacionarios = pd.read_excel(ESTACIONARIOS_PATH, sheet_name="Estacionarios")
 df = pd.read_excel(DATA_PATH)
 df["Fecha"] = pd.to_datetime(df["Fecha"])
 
-# === FUNCION PARA DETERMINAR p y q ===
+# determinar q y p
 def obtener_p_q(serie):
     pacf_vals = pacf(serie.dropna(), nlags=10)
     acf_vals = acf(serie.dropna(), nlags=10)
@@ -21,7 +21,7 @@ def obtener_p_q(serie):
     q = next((i for i, val in enumerate(acf_vals[1:], 1) if abs(val) < 0.2), 1)
     return p, q
 
-# === PROCESAR CADA MEDICAMENTO ===
+# procesamientos de cada medicamento estacionario
 resultados = []
 
 for _, row in df_estacionarios.iterrows():
@@ -52,7 +52,7 @@ for _, row in df_estacionarios.iterrows():
     except Exception as e:
         continue
 
-# === GUARDAR RESULTADOS ===
+# guardar resultados
 df_resultados = pd.DataFrame(resultados)
 df_resultados.to_excel(RESULT_PATH, index=False)
 print(f"✅ Archivo guardado: {RESULT_PATH}")
